@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Animations with Hello</title>
+    <style>
+        /* Body styling with a background image */
+        body {
+            background-image: url('back.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white; /* White text color */
+            overflow: hidden;
+        }
+
+        /* Styling for the "Hello" message */
+        .message {
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            color: #ff4081; /* Light pink color for the text */
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+            animation: fadeInMessage 3s ease-in-out;
+            margin-bottom: 50px; /* Space between message and animations */
+        }
+
+        /* Animation for the "Hello" message */
+        @keyframes fadeInMessage {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Kiss animation container */
+        .animation-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            position: absolute;
+            top: 40%;
+            width: 100%;
+            opacity: 0;
+            animation: fadeInAnimations 5s ease-in-out forwards;
+        }
+
+        /* Animation for all elements */
+        @keyframes fadeInAnimations {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Styling for each element (heart, star, etc.) */
+        .element {
+            font-size: 30px;
+            animation: floatUp 5s ease-in-out infinite;
+            opacity: 0;
+            animation-delay: calc(0.02s * var(--index)); /* Stagger the animations */
+        }
+
+        /* Animation for floating effect */
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- "Hello" message -->
+    <div class="message">I LOVE YOU MERA BCCHA <br> Wish you a very very happy birth day mera bccha babu 💋💋</div>
+
+    <!-- Animation elements container (1000 items) -->
+    <div class="animation-container">
+        <!-- Dynamically generated 1000 elements -->
+    </div>
+
+    <script>
+        const container = document.querySelector('.animation-container');
+
+        // Generate 1000 elements dynamically (use hearts, stars, etc.)
+        for (let i = 0; i < 10000; i++) {
+            const element = document.createElement('span');
+            element.classList.add('element');
+            // You can change this to any symbol (❤️, 🌟, etc.)
+            element.innerHTML = '💋💋'; // Heart symbol
+            element.style.setProperty('--index', i); // Assigning index for animation delay
+            container.appendChild(element);
+        }
+    </script>
+
+</body>
+</html>
